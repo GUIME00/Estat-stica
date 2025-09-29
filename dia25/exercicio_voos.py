@@ -5,7 +5,7 @@ import seaborn as sns
 
 # 1.
 # Arquivo CSV com dados de voos
-df = pd.read_csv('dados1.csv')
+df = pd.read_csv("dados1.csv", parse_dates=["Data"])
 
 # 2.
 # A: Carregar e explorar os dados
@@ -28,17 +28,17 @@ percentiles = np.percentile(df['Receita (R$)'], [25, 50, 75])
 print(f'Percentis da Receita (R$): {percentiles}')
 
 # Encontrar a companhia com maior receita total e com maior número de passageiros.
-max_revenue_company = df.groupby('Companhia Aérea')['Receita (R$)'].sum().idxmax()
-max_passengers_company = df.groupby('Companhia Aérea')['Passageiros'].sum().idxmax()
+max_revenue_company = df.groupby('Companhia')['Receita (R$)'].sum().idxmax()
+max_passengers_company = df.groupby('Companhia')['Passageiros'].sum().idxmax()
 print(f'Companhia com maior receita total: {max_revenue_company}')
 
 # Contagem de voos por companhia.
-flight_counts = df['Companhia Aérea'].value_counts()
+flight_counts = df['Companhia'].value_counts()
 print(flight_counts)
 
 # Receita média por companhia e por aeroporto de origem.
-mean_revenue_by_company = df.groupby('Companhia Aérea')['Receita (R$)'].mean()
-mean_revenue_by_origin = df.groupby('Aeroporto de Origem')['Receita (R$)'].mean()
+mean_revenue_by_company = df.groupby('Companhia')['Receita (R$)'].mean()
+mean_revenue_by_origin = df.groupby('Aeroporto Destino')['Receita (R$)'].mean()
 
 # C. Visualizações com Seaborn 
 # Histograma da distribuição de passageiros. 
@@ -51,7 +51,7 @@ plt.show(block=False)
 
 # Boxplot da ocupação (%) separada por companhia aérea.
 plt.figure(figsize=(12, 6))
-sns.boxplot(x='Companhia Aérea', y='Ocupação (%)', data=df)
+sns.boxplot(x='Companhia', y='Ocupação (%)', data=df)
 plt.title('Ocupação (%) por Companhia Aérea')
 plt.xlabel('Companhia Aérea')
 plt.ylabel('Ocupação (%)')
@@ -96,20 +96,66 @@ correlation_occupancy_revenue = df['Ocupação (%)'].corr(df['Receita (R$)'])
 print(f'Correlação entre Ocupação e Receita: {correlation_occupancy_revenue}')
 
 # Quais aeroportos de origem concentram mais voos?
-most_flights_origin = df['Aeroporto de Origem'].value_counts().idxmax()
+most_flights_origin = df['Aeroporto Destino'].value_counts().idxmax()
 print(f'Aeroporto de origem com mais voos: {most_flights_origin}')
 
 # 5️.  
 # Usar groupby para analisar: 
 # Receita média por mês.
-df['Data do Voo'] = pd.to_datetime(df['Data do Voo'])
-df['Mês'] = df['Data do Voo'].dt.month
+df['Data do Voo'] = pd.to_datetime(df['Data'])
+df['Mês'] = df['Data'].dt.month
 mean_revenue_by_month = df.groupby('Mês')['Receita (R$)'].mean()
 print(mean_revenue_by_month)
 
 # Ocupação média por companhia.
-mean_occupancy_by_company = df.groupby('Companhia Aérea')['Ocupação (%)'].mean()
+mean_occupancy_by_company = df.groupby('Companhia')['Ocupação (%)'].mean()
 print(mean_occupancy_by_company)
+
+# Análises extras:
+# 1. Qual a Rota mais eficiente por companhia (baseado em Ocupação média ou Receita por passageiro)?
+# Mostrar as 5 melhores em ordem decrescente
+# Criar coluna de Rota
+df['Rota'] = df['Aeroporto Origem'] + ' - ' + df['Aeroporto Destino']
+
+# Calcular Receita por passageiro
+df['ReceitaPorPassageiro'] = df['Receita (R$)'] / df['Passageiros']
+
+# Agrupar por Companhia e Rota e calcular a média de Receita por Passageiro
+eficiencia = df.groupby(['Companhia', 'Rota'])['ReceitaPorPassageiro'].mean().reset_index()
+
+# Obter top 5 rotas mais eficientes por companhia
+top5_por_companhia = (
+    eficiencia.sort_values('ReceitaPorPassageiro', ascending=False)
+    .groupby('Companhia')
+    .head(5)
+)
+
+# Exibir resultado final
+print(top5_por_companhia.sort_values(['Companhia', 'ReceitaPorPassageiro'], ascending=[True, False]))
+# 2. Calcular e mostrar graficamente a Evolução mensal do total de passageiros por companhia
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Converter coluna Data
+df['Data'] = pd.to_datetime(df['Data'])
+
+# Criar coluna de Mês (Ano-Mês)
+df['AnoMes'] = df['Data'].dt.to_period('M').astype(str)
+
+# Agrupar total de passageiros por mês e companhia
+evolucao = df.groupby(['AnoMes', 'Companhia'])['Passageiros'].sum().reset_index()
+
+# Plotar gráfico
+plt.figure(figsize=(14, 7))
+sns.lineplot(data=evolucao, x='AnoMes', y='Passageiros', hue='Companhia', marker='o')
+
+plt.title('Evolução Mensal do Total de Passageiros por Companhia')
+plt.xlabel('Ano-Mês')
+plt.ylabel('Total de Passageiros')
+plt.xticks(rotation=45)
+plt.grid(True)
+plt.tight_layout()
+plt.show(block=False)
 
 input("Pressione Enter para fechar tudo...")
 plt.close('all')
