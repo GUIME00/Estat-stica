@@ -10,5 +10,5 @@ def bhaskara(a, b, c):
     return x1, x2
 
 # Exemplo de uso
-raizes = bhaskara(1, -3, 2)
+raizes = bhaskara(1, -2, 1)
 print("Raízes da equação:", raizes)
