@@ -21,7 +21,7 @@ A média de uma distribuição representa o valor que resume a tendência centra
 ========================================================================================================================================================
 ===================
 ========================================================================================================================================================
-Overfitting (ou sobreajuste) ocorre em aprendizado de máquina quando um modelo se ajusta tão precisamente aos dados de treinamento, memorizando até o ruído, que perde a capacidade de fazer previsões precisas em dados novos e desconhecidos.
+Overfitting ocorre em aprendizado de máquina quando um modelo se ajusta tão precisamente aos dados de treinamento, memorizando até o ruído, que perde a capacidade de fazer previsões precisas em dados novos e desconhecidos.
 É como se o modelo "decore" a matéria de treinamento, mas falhe na prova por não generalizar o conhecimento.
 
 Como o Overfitting acontece?
