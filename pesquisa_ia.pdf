@@ -1,0 +1,47 @@
+========================================================================================================================================================
+Em modelos de regressão linear, a suposição mais comum e amplamente utilizada para os termos de erro é a distribuição normal. 
+Essa suposição é um pilar da regressão linear clássica e está associada a diversas condições importantes: 
+
+- Distribuição: os erros (ou resíduos, que são a estimativa dos erros) são normalmente distribuídos.
+
+- Média zero: a média da distribuição dos erros é igual a zero. Isso significa que, em média, a linha de regressão representa adequadamente os dados e não há superestimação ou subestimação sistemática.
+
+- Homocedasticidade (variância constante): a variância dos erros é constante para todos os valores das variáveis independentes. Em outras palavras, o erro não deve aumentar ou diminuir conforme a variável independente muda.
+
+- Independência: os erros são independentes uns dos outros, ou seja, o erro de uma observação não está correlacionado com o erro de outra. 
+
+Por que a distribuição normal é utilizada?
+A suposição de erros com distribuição normal permite que os pesquisadores realizem testes estatísticos robustos e construam intervalos de confiança para os coeficientes do modelo. 
+Quando essas suposições são atendidas, o método dos Mínimos Quadrados Ordinários (MQO) fornece estimativas eficientes e não enviesadas dos parâmetros do modelo.
+========================================================================================================================================================
+===================
+========================================================================================================================================================
+A média de uma distribuição representa o valor que resume a tendência central dos dados, agindo como um ponto de equilíbrio ou centro de massa dos valores, onde todos os pontos da distribuição são considerados. 
+É calculada somando-se todos os valores de um conjunto de dados e dividindo-os pelo número total de valores, fornecendo um valor único que sintetiza a informação do conjunto.
+========================================================================================================================================================
+===================
+========================================================================================================================================================
+Overfitting (ou sobreajuste) ocorre em aprendizado de máquina quando um modelo se ajusta tão precisamente aos dados de treinamento, memorizando até o ruído, que perde a capacidade de fazer previsões precisas em dados novos e desconhecidos.
+É como se o modelo "decore" a matéria de treinamento, mas falhe na prova por não generalizar o conhecimento.
+
+Como o Overfitting acontece?
+
+- Modelo muito complexo: Um modelo muito complexo pode identificar padrões irrelevantes nos dados de treinamento que não são representativos do cenário real. 
+
+- Dados de treinamento insuficientes: Se o conjunto de dados de treinamento for pequeno ou contiver ruído, o modelo pode se ajustar a essas anomalias em vez de aprender as tendências reais. 
+
+- Excesso de recursos (features): Adicionar muitas "features" (características) ao modelo pode torná-lo muito complexo, aumentando a chance de memorizar padrões específicos dos dados de treinamento. 
+
+Como identificar o Overfitting? 
+
+- O erro do modelo nos dados de treinamento é muito baixo, mas o erro nos dados de teste (dados novos que o modelo não viu) é significativamente alto.
+
+Como evitar o Overfitting?
+- Aumentar o conjunto de dados: Usar um volume maior de dados de treinamento ajuda o modelo a aprender padrões mais gerais e menos específicas. 
+
+- Simplificar o modelo: Utilizar um modelo menos complexo pode reduzir sua capacidade de memorizar detalhes irrelevantes. 
+
+- Regularização: Técnicas como a regularização L1 e L2 penalizam os pesos do modelo, reduzindo sua complexidade e evitando o ajuste excessivo aos dados de treinamento. 
+
+- Parada antecipada (Early Stopping): Interromper o treinamento do modelo assim que seu desempenho em um conjunto de validação separado começar a piorar, mesmo que o desempenho nos dados de treinamento continue a melhorar.
+========================================================================================================================================================
