@@ -1,5 +1,4 @@
 import os
-import sys
 
 # --- QUIZ: Estatística em IA ---
 quiz_estatistica = [
@@ -47,10 +46,10 @@ def executar_quiz(quiz):
             print(opcao)
         resposta = input("Sua resposta (A, B, C ou D): ").strip().upper()
         if resposta == q["resposta"]:
-            print("Eeeexaaaaatoooo!")
+            print("Certa resposta!")
             acertos += 1
         else:
-            print(f"Eeeerrooooouuuu! A resposta correta é: {q['resposta']}")
+            print(f"Eeeerrooooouuuu!")
     print(f"\nVocê acertou {acertos} de {len(quiz)} perguntas.")
 
 # --- Menu principal ---
@@ -75,7 +74,7 @@ def menu():
             abrir_pdf("pesquisa_ia.pdf")
         elif escolha == '0':
             print("\nEncerrando o programa. Até a próxima!")
-            sys.exit()
+            break
         else:
             print("Opção não é válida. Tente novamente.")
 
