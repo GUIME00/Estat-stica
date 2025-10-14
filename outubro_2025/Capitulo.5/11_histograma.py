@@ -5,6 +5,7 @@ import seaborn as sns
 # Gere 1000 números aleatórios de uma distribuição normal( média=60, desvio padrão=15)
 data = np.random.normal(loc=60, scale=15, size=1000)
 
+print("Exercício - 11")
 # histograma com matplotlib
 plt.figure(figsize=(10, 5))
 plt.hist(data, bins=30, edgecolor='black')

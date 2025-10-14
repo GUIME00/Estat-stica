@@ -4,6 +4,7 @@ import seaborn as sns
 
 df = pd.read_csv('industria.csv', parse_dates=['Data'])
 
+print("Exercício 14 - 5")
 # Use groupby ou pivot_table para calcular a receita total para cada combinação de 'Fabrica' e 'Produto'
 pivot_df = df.pivot_table(index='Fabrica', columns='Produto', values='Receita', aggfunc='sum', fill_value=0)
 print(pivot_df)

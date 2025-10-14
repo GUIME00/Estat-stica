@@ -10,4 +10,5 @@ total_restantes = vermelhas_restantes + verdes_restantes
 # Probabilidade da próxima bola ser verde
 probabilidade_verde = verdes_restantes / total_restantes
 
+print("Exercício - 4")
 print(f"A probabilidade da próxima bola ser verde, dado que a primeira foi vermelha, é {probabilidade_verde:.2f}")

@@ -7,4 +7,5 @@ favoraveis = 2
 # Calculando a probabilidade
 probabilidade = favoraveis / total_resultados
 
+print("Exercício - 3")
 print(f"A probabilidade de sair exatamente uma cara é {probabilidade:.2f}")

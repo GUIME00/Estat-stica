@@ -4,6 +4,7 @@ import seaborn as sns
 
 df = pd.read_csv('industria.csv', parse_dates=['Data'])
 
+print("Exercício 14 - 3")
 # Criar um coluna 'Mes' a partir da data de cada registro
 df['Mes'] = df['Data'].dt.to_period('M')
 

@@ -8,4 +8,5 @@ mediana = serie.median()
 valor_minimo = serie.min()
 valor_maximo = serie.max()
 amplitude = valor_maximo - valor_minimo
+print("Exercício - 7")
 print(f"Média: {media}, Mediana: {mediana}, Mínimo: {valor_minimo}, Máximo: {valor_maximo}, Amplitude: {amplitude}")

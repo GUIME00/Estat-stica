@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 x = np.linspace(0.1, 10, 100)
 y = np.sin(x) + np.log(x)
 
+print("Exercício - 8")
 plt.plot(x, y)
 plt.title('Função: y = sin(x) + log(x)')
 plt.xlabel('x')

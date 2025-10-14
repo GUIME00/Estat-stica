@@ -10,5 +10,6 @@ y = np.array(notas)
 model = LinearRegression().fit(X, y)
 slope = model.coef_[0]
 intercept = model.intercept_
+print("Exercício - 9")
 print(f"Coeficiente angular (slope): {slope}")
 print(f"Intercepto: {intercept}")

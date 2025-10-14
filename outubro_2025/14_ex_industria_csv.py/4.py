@@ -4,6 +4,7 @@ import seaborn as sns
 
 df = pd.read_csv('industria.csv', parse_dates=['Data'])
 
+print("Exercício 14 - 4")
 # Cria a coluna 'Lucro' = 'Receita' - 'Custo'
 df['Lucro'] = df['Receita'] - df['Custo']
 

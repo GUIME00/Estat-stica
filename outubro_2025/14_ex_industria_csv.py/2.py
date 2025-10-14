@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 
 df = pd.read_csv('industria.csv', parse_dates=['Data'])
 
+print("Exercício 14 - 2")
 # Calcule a Receita Média de cada Produto
 df['Receita'] = df[['Receita']].mean(axis=1)
 print(df[['Data', 'Produto', 'Receita']])
