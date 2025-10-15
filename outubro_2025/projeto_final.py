@@ -1,31 +1,71 @@
 import os
 
-# --- QUIZ: Estatística em IA ---
-quiz_estatistica = [
-    {
-        "pergunta": "Qual é a distribuição mais usada para modelar erro em regressão linear?",
-        "opcoes": ["A) Distribuição Uniforme", "B) Distribuição Normal", "C) Distribuição de Poisson", "D) Distribuição Exponencial"],
-        "resposta": "B"
-    },
-    {
-        "pergunta": "O que representa a média de uma distribuição?",
-        "opcoes": ["A) O valor mais frequente", "B) O ponto central", "C) A variação", "D) A dispersão"],
-        "resposta": "B"
-    }
+# --- Banco de Perguntas: Estatística ---
+perguntas_estat = [
+    {"pergunta": "Qual medida representa a média dos quadrados dos desvios?",
+     "opcoes": ["A) Variância", "B) Desvio padrão", "C) Moda", "D) Mediana"],
+     "correta": "A"},
+    {"pergunta": "Distribuição mais usada para modelar eventos raros:",
+     "opcoes": ["A) Normal", "B) Poisson", "C) Binomial", "D) Uniforme"],
+     "correta": "B"},
+    {"pergunta": "O valor que divide a amostra ao meio é chamado de:",
+     "opcoes": ["A) Média", "B) Mediana", "C) Moda", "D) Variância"],
+     "correta": "B"},
+    {"pergunta": "Se todos os valores têm a mesma probabilidade de ocorrer, temos a distribuição:",
+     "opcoes": ["A) Normal", "B) Uniforme", "C) Binomial", "D) Poisson"],
+     "correta": "B"},
+    {"pergunta": "O desvio padrão mede:",
+     "opcoes": ["A) Tendência central", "B) Grau de dispersão", "C) Probabilidade", "D) Frequência"],
+     "correta": "B"},
+    {"pergunta": "Qual destas NÃO é uma medida de tendência central?",
+     "opcoes": ["A) Média", "B) Moda", "C) Variância", "D) Mediana"],
+     "correta": "C"},
+    {"pergunta": "Em um histograma, a área total representa:",
+     "opcoes": ["A) Média", "B) Frequência total", "C) Probabilidade total", "D) Mediana"],
+     "correta": "C"},
+    {"pergunta": "Quando a média é maior que a mediana, a distribuição tende a ser:",
+     "opcoes": ["A) Simétrica", "B) Assimétrica à esquerda", "C) Assimétrica à direita", "D) Normal"],
+     "correta": "C"},
+    {"pergunta": "O Teorema Central do Limite afirma que:",
+     "opcoes": ["A) Toda variável é normal", "B) Médias amostrais tendem à normalidade", "C) A variância é sempre constante", "D) A moda é igual à mediana"],
+     "correta": "B"},
+    {"pergunta": "Probabilidade de evento impossível é:",
+     "opcoes": ["A) 1", "B) 0", "C) 0,5", "D) Depende da amostra"],
+     "correta": "B"},
 ]
 
-# --- QUIZ: Machine Learning ---
-quiz_ml = [
-    {
-        "pergunta": "O que é overfitting?",
-        "opcoes": ["A) Quando o modelo generaliza bem", "B) Quando o modelo acerta tudo nos dados de teste", "C) Quando o modelo aprende ruídos dos dados de treino", "D) Quando o modelo é muito simples"],
-        "resposta": "C"
-    },
-    {
-        "pergunta": "Qual é a função da regularização?",
-        "opcoes": ["A) Aumentar o erro", "B) Reduzir o tempo de treino", "C) Evitar overfitting", "D) Diminuir o número de variáveis"],
-        "resposta": "C"
-    }
+# --- Banco de Perguntas: Machine Learning ---
+perguntas_ml = [
+    {"pergunta": "O que é overfitting?",
+     "opcoes": ["A) Modelo que generaliza bem", "B) Modelo que aprende ruído do treino", "C) Modelo que não aprende nada", "D) Nenhuma das anteriores"],
+     "correta": "B"},
+    {"pergunta": "Qual algoritmo é usado em classificação?",
+     "opcoes": ["A) KNN", "B) Regressão Linear", "C) PCA", "D) K-means"],
+     "correta": "A"},
+    {"pergunta": "O que significa 'supervisionado' em Machine Learning?",
+     "opcoes": ["A) Sem rótulos", "B) Com rótulos", "C) Autoaprendizado", "D) Nenhuma das anteriores"],
+     "correta": "B"},
+    {"pergunta": "Qual técnica reduz dimensionalidade?",
+     "opcoes": ["A) SVM", "B) PCA", "C) Regressão logística", "D) Árvore de decisão"],
+     "correta": "B"},
+    {"pergunta": "Na regressão linear, o erro é medido pela:",
+     "opcoes": ["A) Soma dos quadrados dos resíduos", "B) Moda", "C) Desvio padrão", "D) Acurácia"],
+     "correta": "A"},
+    {"pergunta": "O que é regularização?",
+     "opcoes": ["A) Técnica para aumentar overfitting", "B) Reduz complexidade do modelo", "C) Melhorar gráficos", "D) Aumentar dimensionalidade"],
+     "correta": "B"},
+    {"pergunta": "Qual destes é um algoritmo NÃO supervisionado?",
+     "opcoes": ["A) Regressão logística", "B) SVM", "C) K-means", "D) Random Forest"],
+     "correta": "C"},
+    {"pergunta": "O que significa 'feature' em Machine Learning?",
+     "opcoes": ["A) O alvo a ser previsto", "B) Uma variável de entrada", "C) O erro do modelo", "D) O parâmetro de ajuste"],
+     "correta": "B"},
+    {"pergunta": "Qual métrica é usada em classificação binária?",
+     "opcoes": ["A) Acurácia", "B) R²", "C) Erro quadrático médio", "D) Nenhuma das anteriores"],
+     "correta": "A"},
+    {"pergunta": "Em redes neurais, a função que introduz não-linearidade é chamada de:",
+     "opcoes": ["A) Função de ativação", "B) Função de perda", "C) Função de custo", "D) Função de otimização"],
+     "correta": "A"},
 ]
 
 # --- Função para abrir PDF ---
@@ -45,7 +85,7 @@ def executar_quiz(quiz):
         for opcao in q["opcoes"]:
             print(opcao)
         resposta = input("Sua resposta (A, B, C ou D): ").strip().upper()
-        if resposta == q["resposta"]:
+        if resposta == q["correta"]:
             print("Certa resposta!")
             acertos += 1
         else:
@@ -67,9 +107,9 @@ def menu():
         if escolha == '1':
             abrir_pdf("exercicios_resolvidos.pdf")
         elif escolha == '2':
-            executar_quiz(quiz_estatistica)
+            executar_quiz(perguntas_estat)
         elif escolha == '3':
-            executar_quiz(quiz_ml)
+            executar_quiz(perguntas_ml)
         elif escolha == '4':
             abrir_pdf("pesquisa_ia.pdf")
         elif escolha == '0':
