@@ -1,5 +1,3 @@
-Capítulo.1
-
 # Quantidade total de bolas na urna
 total_bolas = 5 + 7
 

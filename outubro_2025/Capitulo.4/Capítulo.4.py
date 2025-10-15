@@ -1,5 +1,3 @@
-Capítulo.4
-
 import numpy as np
 from sklearn.linear_model import LinearRegression
 
@@ -15,9 +13,6 @@ intercept = model.intercept_
 print("Exercício - 9")
 print(f"Coeficiente angular (slope): {slope}")
 print(f"Intercepto: {intercept}")
-
-import numpy as np
-from sklearn.linear_model import LinearRegression
 
 tamanho = [50, 60, 70, 80, 90]
 preco = [ 150, 200, 210, 240, 280]

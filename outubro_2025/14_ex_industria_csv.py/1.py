@@ -5,7 +5,6 @@ import seaborn as sns
 
 df = pd.read_csv('industria.csv', parse_dates=['Data'])
 
-print("Exercício 14 - 1")
 # Calcule a Receita Total de cada Fábrica
 factory_revenue = df.groupby('Fabrica')['Receita'].sum().reset_index()
 print(factory_revenue)

@@ -1,5 +1,3 @@
-Capítulo.5
-
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -35,9 +33,10 @@ plt.title('Gráfico de Dispersão com Seaborn')
 plt.xlabel('Eixo X')
 plt.ylabel('Eixo Y')
 plt.grid(True)
-plt.show()
+plt.show(block=False)
 
 dados = [7, 8, 5, 6, 12, 14, 15, 8, 9, 10]
+
 print("Exercício - 13 ")
 # Crie um boxplot com seaborn
 plt.figure(figsize=(8, 5))
@@ -45,7 +44,7 @@ sns.boxplot(x=dados)
 plt.title('Boxplot com Seaborn')
 plt.xlabel('Valores')
 plt.grid(True)
-plt.show()
+plt.show(block=False)
 
 input("Pressione Enter para fechar os gráficos...")
 plt.close('all')

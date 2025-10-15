@@ -1,5 +1,3 @@
-Exercícios – CSV “industria.csv”
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -20,7 +18,7 @@ plt.xlabel('Fábrica')
 plt.ylabel('Receita Total')
 plt.xticks(rotation=45)
 plt.grid(axis='y')
-plt.show()
+plt.show(block=False)
 
 # Qual fábrica teve maior receita?
 max_revenue_factory = factory_revenue.loc[factory_revenue['Receita'].idxmax()]
@@ -31,12 +29,6 @@ min_revenue_factory = factory_revenue.loc[factory_revenue['Receita'].idxmin()]
 revenue_difference = max_revenue_factory['Receita'] - min_revenue_factory['Receita']
 print(f'A diferença entre a maior e a menor receita é: {revenue_difference}')
 
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-df = pd.read_csv('industria.csv', parse_dates=['Data'])
-
 print("Exercício 14 - 2")
 # Calcule a Receita Média de cada Produto
 df['Receita'] = df[['Receita']].mean(axis=1)
@@ -46,10 +38,11 @@ print(df[['Data', 'Produto', 'Receita']])
 mean_revenue = df.groupby('Produto')['Receita'].mean().reset_index()
 plt.figure(figsize=(10, 6))
 sns.barplot(data=mean_revenue, x='Produto', y='Receita')
+plt.grid(True)
 plt.title('Receita Média por Produto')
 plt.xlabel('Produto')
 plt.ylabel('Receita Média')
-plt.show()
+plt.show(block=False)
 
 # Qual Produto tem maior Receita Média?
 mean_revenue = df.groupby('Produto')['Receita'].mean()
@@ -59,12 +52,6 @@ print(f'O produto com maior receita média é: {max_revenue_product}')
 # Algum produto apresenta Receita Média significativamente menor? Qual?
 min_revenue_product = mean_revenue.idxmin()
 print(f'O produto com menor receita média é: {min_revenue_product}')
-
-import matplotlib.pyplot as plt
-import pandas as pd
-import seaborn as sns
-
-df = pd.read_csv('industria.csv', parse_dates=['Data'])
 
 print("Exercício 14 - 3")
 # Criar um coluna 'Mes' a partir da data de cada registro
@@ -86,7 +73,7 @@ plt.ylabel('Quantidade Total Vendida')
 plt.xticks(rotation=45)
 plt.grid()
 plt.tight_layout()
-plt.show()
+plt.show(block=False)
 
 # Qual mês teve a maior quantidade de vendas?
 max_sales_month = monthly_sales.loc[monthly_sales['Total_Vendido'].idxmax()]
@@ -101,12 +88,6 @@ elif correlation < 0:
 else:
     trend = 'estável'
 print(f'Tendência nas vendas ao longo do período: {trend} (correlação: {correlation:.2f})')
-
-import matplotlib.pyplot as plt
-import pandas as pd
-import seaborn as sns
-
-df = pd.read_csv('industria.csv', parse_dates=['Data'])
 
 print("Exercício 14 - 4")
 # Cria a coluna 'Lucro' = 'Receita' - 'Custo'
@@ -124,7 +105,7 @@ plt.xlabel('Fábrica')
 plt.ylabel('Lucro Médio')
 plt.xticks(rotation=45)
 plt.tight_layout()
-plt.show()
+plt.show(block=False)
 
 # Qual fábrica teve o maior lucro médio?
 fabrica_mais_lucro = lucro_medio.iloc[0]
@@ -137,12 +118,6 @@ if len(fabrica_lucro_negativo) > 0:
 else:
     print("Nenhuma fábrica apresentou lucro negativo em algum registro.")
 
-import matplotlib.pyplot as plt
-import pandas as pd
-import seaborn as sns
-
-df = pd.read_csv('industria.csv', parse_dates=['Data'])
-
 print("Exercício 14 - 5")
 # Use groupby ou pivot_table para calcular a receita total para cada combinação de 'Fabrica' e 'Produto'
 pivot_df = df.pivot_table(index='Fabrica', columns='Produto', values='Receita', aggfunc='sum', fill_value=0)
@@ -154,7 +129,7 @@ sns.heatmap(pivot_df, annot=True, fmt=".2f", cmap='YlGnBu')
 plt.title('Receita Total por Fábrica e Produto')
 plt.xlabel('Produto')
 plt.ylabel('Fábrica')
-plt.show()
+plt.show(block=False)
 
 # Qual produto gerou a maior receita total em cada fábrica?
 max_revenue_products = pivot_df.idxmax(axis=1)
@@ -165,3 +140,6 @@ print(max_revenue_products)
 missing_products = pivot_df[pivot_df == 0].stack().index.tolist()
 print("Produtos não produzidos ou vendidos em alguma fábrica:")
 print(missing_products)
+
+input("Clique Enter para fechar as janelas plotadas...")
+plt.close('all')
