@@ -69,13 +69,13 @@ perguntas_ml = [
 ]
 
 # --- Função para abrir PDF ---
-def abrir_pdf(nome_arquivo):
+def abrir_pdf(arquivo):
     try:
-        os.startfile(nome_arquivo)  # Apenas no Windows
+        os.startfile(arquivo)  # Apenas no Windows
     except AttributeError:
-        print("\nEste comando funciona apenas no Windows. Abra manualmente:", nome_arquivo)
+        print("\nEste comando funciona apenas no Windows. Abra manualmente:", arquivo)
     except FileNotFoundError:
-        print(f"\nArquivo não encontrado: {nome_arquivo}")
+        print(f"\nArquivo não encontrado: {arquivo}")
 
 # --- Função para executar quiz ---
 def executar_quiz(quiz):
@@ -105,13 +105,13 @@ def menu():
         escolha = input("\nEscolha uma opção: ").strip()
 
         if escolha == '1':
-            abrir_pdf("exercicios_resolvidos.pdf")
+            abrir_pdf("respostas_IA.pdf")
         elif escolha == '2':
             executar_quiz(perguntas_estat)
         elif escolha == '3':
             executar_quiz(perguntas_ml)
         elif escolha == '4':
-            abrir_pdf("pesquisa_ia.pdf")
+            abrir_pdf("arquivo.pdf")
         elif escolha == '0':
             print("\nEncerrando o programa. Até a próxima!")
             break
